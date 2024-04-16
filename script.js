@@ -1,6 +1,7 @@
 const botAvatar = document.getElementById('veal-avatar');
 const cardsContainer = document.getElementById('cards');
 const title = document.getElementById('title')
+const selectCategories = document.getElementById('selectCategories')
 title.innerText = title.innerText.replace('{page}', window.location.href.split('/')[3].split('.')[0])
 
 const commands = [
@@ -474,6 +475,15 @@ const commands = [
     }
 ]
 
+const categories = [...new Set(commands.map(command => command.category))];
+
+function addSelectOptions() {
+    for (const category of categories) {
+        selectCategories.innerHTML += `<option>${category}</option>`
+        console.log(category)
+    }
+}
+
 function toggleBotAvatar(x) {
     botAvatar.hidden = x.matches;
 }
@@ -510,6 +520,7 @@ function initializeMediaQueryListener() {
 }
 
 if (window.location.href.includes('commands')) {
+    addSelectOptions()
     if (Array.isArray(commands) && commands.length > 0) {
         renderCommandCards(commands);
     } else {
@@ -518,6 +529,10 @@ if (window.location.href.includes('commands')) {
 } else if (window.location.href.includes('homepage')) {
     initializeMediaQueryListener();
 }
+
+selectCategories.addEventListener('select', (a) => {
+    console.log(a)
+})
 
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
