@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap Landing Page</title>
+    <title id="title">Veal - {page}</title>
+    <link rel="shortcut icon" href="assets/veal.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Bootstrap JS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
     <!-- Font Awesome 5 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
@@ -22,7 +22,7 @@
     <!-- Image and text -->
     <nav class="navbar navbar-dark bg-secondary-subtle px-4">
         <div class="bg-black bg-gradient rounded p-1">
-            <a class="navbar-brand fs-4 fw-medium" href="#">
+            <a class="navbar-brand fs-4 fw-medium">
                 <img src="/assets/veal.png" width="50" height="50" class="rounded-circle mx-2" alt="veal">
                 Veal
             </a>
@@ -30,7 +30,6 @@
         <button class="btn btn-dark fs-5 fw-medium p-2 px-4" onclick="openInvite('bot')">
             <i class="fa-solid fa-circle-plus me-2"></i>Invite
         </button>
-        </div>
     </nav>
     <div class="container d-flex justify-content-between align-items-center p-5">
         <div>
@@ -38,24 +37,18 @@
             <p class="fs-5">Veal is a free discord bot designed to elevate your community with simplicity, versatility
                 and
                 customization.</p>
-            <button class="btn btn-primary" onclick="openInvite('server')"><i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Join the support
+            <button class="btn btn-primary" onclick="openInvite('server')"><i
+                    class="fa-solid fa-arrow-right-to-bracket me-2"></i>Join the support
                 server.</button>
-            <button class="btn btn-primary" onclick="openInvite('bot')"><i class="fa-solid fa-plus me-2"></i>Install / invite the bot.</button>
-            <button class="btn btn-secondary" data-bs-toggle="collapse" href="#commands"><i
-                    class="fa-solid fa-list me-2"></i>List of
+            <button class="btn btn-primary" onclick="openInvite('bot')"><i class="fa-solid fa-plus me-2"></i>Install /
+                invite the bot.</button>
+            <button class="btn btn-secondary" data-bs-toggle="collapse"
+                onclick="window.location.href = '/commands.html'"><i class="fa-solid fa-list me-2"></i>List of
                 commands.</button>
         </div>
         <div>
             <img src="/assets/veal.png" height="200" width="200"
                 class="rounded-circle mx-2 border border-3 border-white" alt="veal" id="veal-avatar">
-        </div>
-    </div>
-    <div class="collapse" id="commands">
-        <hr class="hr hr-blurry" />
-        <div class="container">
-            <h1 class="text-center p-5 display-4">Available commands</h1>
-            <div class="container bg-dark-subtle rounded p-3 mt-3 d-flex flex-wrap justify-content-center" id="cards">
-            </div>
         </div>
     </div>
     <hr class="hr hr-blurry" />
