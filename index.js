@@ -7,6 +7,7 @@ app.use(express.static(join(process.cwd(), 'public')))
 
 app.get('/*', (req, res) => res.redirect('/homepage.html'))
 
-app.listen(5000, () => {
-    console.log(`http://localhost:5000`)
+const port = process.env.PORT || 5000
+app.listen(port, () => {
+    console.log(`http://localhost:${port}`)
 })
