@@ -503,7 +503,10 @@ function createCommandCard(command, index) {
                 <h5 class="card-title text-center fw-normal">${index + 1}. <span class="fw-bold">${name}</span></h5>
                 <hr class="hr hr-blurry" />
                 <p class="card-text">
-                <p class="text-center"><b>Category</b> - ${category}<br><b>Usage</b>:<br>${usage}</p>
+                <p class="text-center"><b>Category</b> - ${category}</p>
+                <p class="text-center">
+                <b>Usage</b> - <span class="bg-secondary-subtle rounded p-1">${usage}</span>
+                </p></p>
                 <hr class="hr hr-blurry" />
                 ${description}
                 </p>
