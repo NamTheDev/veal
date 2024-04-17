@@ -527,6 +527,11 @@ function initializeMediaQueryListener() {
     });
 }
 
+function updateCards() {
+    const value = commandsSearchBar.value.toLowerCase()
+    renderCommandCards(commands.filter(({ name, description }) => name.toLowerCase().includes(value) || description.toLowerCase().includes(value)))
+}
+
 if (window.location.href.includes('commands')) {
     addSelectOptions()
     if (Array.isArray(commands) && commands.length > 0) {
@@ -534,21 +539,18 @@ if (window.location.href.includes('commands')) {
     } else {
         console.error('Invalid commands data');
     }
+
+    selectCategories.addEventListener('change', () => {
+        const value = selectCategories.value.toLowerCase()
+        renderCommandCards(value === 'all' ? commands : commands.filter(({ category }) => category === value))
+    })
+
+    commandsSearchBar.addEventListener("input", updateCards);
+
 } else if (window.location.href.includes('homepage')) {
     initializeMediaQueryListener();
 }
 
-selectCategories.addEventListener('change', () => {
-    const value = selectCategories.value.toLowerCase()
-    renderCommandCards(value === 'all' ? commands : commands.filter(({ category }) => category === value))
-})
-
-function updateCards() {
-    const value = commandsSearchBar.value.toLowerCase()
-    renderCommandCards(commands.filter(({ name, description }) => name.toLowerCase().includes(value) || description.toLowerCase().includes(value)))
-}
-
-commandsSearchBar.addEventListener("input", updateCards);
 
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
