@@ -2,6 +2,7 @@ const botAvatar = document.getElementById('veal-avatar');
 const cardsContainer = document.getElementById('cards');
 const title = document.getElementById('title')
 const selectCategories = document.getElementById('selectCategories')
+const commandsSearchBar = document.getElementById('commandsSearchBar')
 title.innerText = title.innerText.replace('{page}', window.location.href.split('/')[3].split('.')[0])
 
 const commands = [
@@ -475,7 +476,7 @@ const commands = [
     }
 ]
 
-const categories = [...new Set(commands.map(command => command.category))];
+const categories = ["all", ...new Set(commands.map(command => command.category))];
 
 function addSelectOptions() {
     for (const category of categories) {
@@ -495,13 +496,17 @@ function openInvite(type) {
 }
 
 function createCommandCard(command, index) {
-    const { name, description } = command;
+    const { name, description, category, usage } = command;
     return `
-        <div class="card m-2" style="width: 18rem;">
+        <div class="card m-2 shiny-hover" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title text-center fw-normal">${index + 1}. <span class="fw-bold">${name}</span></h5>
                 <hr class="hr hr-blurry" />
-                <p class="card-text">${description}</p>
+                <p class="card-text">
+                <p class="text-center"><b>Category</b> - ${category}<br><b>Usage</b>:<br>${usage}</p>
+                <hr class="hr hr-blurry" />
+                ${description}
+                </p>
             </div>
         </div>
     `;
@@ -530,9 +535,17 @@ if (window.location.href.includes('commands')) {
     initializeMediaQueryListener();
 }
 
-selectCategories.addEventListener('select', (a) => {
-    console.log(a)
+selectCategories.addEventListener('change', () => {
+    const value = selectCategories.value.toLowerCase()
+    renderCommandCards(value === 'all' ? commands : commands.filter(({ category }) => category === value))
 })
+
+function updateCards() {
+    const value = commandsSearchBar.value.toLowerCase()
+    renderCommandCards(commands.filter(({ name, description }) => name.toLowerCase().includes(value) || description.toLowerCase().includes(value)))
+}
+
+commandsSearchBar.addEventListener("input", updateCards);
 
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))

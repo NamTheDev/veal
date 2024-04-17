@@ -1,0 +1,12 @@
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.shiny-hover {
+    transition: 300ms;
+    transition-timing-function: ease;
+}
+
+.shiny-hover:hover {
+    box-shadow: inset 0px 0px 20px rgba(255, 255, 255, 0.534);
+}
