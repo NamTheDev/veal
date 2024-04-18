@@ -7,6 +7,7 @@ const locationHref = window.location.href.split('/')
 const titleChange = locationHref[locationHref.length - 1].split('.')[0]
 title.innerText = title.innerText.replace('{page}', titleChange)
 const buttonsList = document.getElementById('buttonsList')
+const commandsTotal = document.getElementById('commandsTotal')
 
 const commands = [
     {
@@ -478,6 +479,8 @@ const commands = [
         "category": "utilities"
     }
 ]
+
+commandsTotal.innerText = commands.length
 
 const categories = ["all", ...new Set(commands.map(command => command.category))];
 
