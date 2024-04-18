@@ -478,7 +478,8 @@ const commands = [
         "usage": ".guildbanner",
         "category": "utilities"
     }
-]
+].map((command, index) => ({...command, index: index+1}))
+console.log(commands)
 
 commandsTotal.innerText = commands.length
 
@@ -496,12 +497,12 @@ function openInvite(type) {
     window.open(url, name, 'width=500,height=700,left=500,top=50');
 }
 
-function createCommandCard(command, index) {
-    const { name, description, category, usage } = command;
+function createCommandCard(command) {
+    const { name, description, category, usage, index} = command;
     return `
         <div class="card m-2 shiny-hover" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title text-center fw-normal">${index + 1}. <span class="fw-bold">${name}</span></h5>
+                <h5 class="card-title text-center fw-normal">${index}. <span class="fw-bold">${name}</span></h5>
                 <hr class="hr hr-blurry" />
                 <p class="card-text">
                 <p class="text-center"><b>Category</b> - ${category}</p>
@@ -517,7 +518,7 @@ function createCommandCard(command, index) {
 }
 
 function renderCommandCards(commands) {
-    cardsContainer.innerHTML = commands.map((command, index) => createCommandCard(command, index)).join('');
+    cardsContainer.innerHTML = commands.map((command) => createCommandCard(command)).join('');
 }
 
 function initializeMediaQueryListener() {
