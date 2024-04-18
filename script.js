@@ -3,7 +3,10 @@ const cardsContainer = document.getElementById('cards');
 const title = document.getElementById('title')
 const selectCategories = document.getElementById('selectCategories')
 const commandsSearchBar = document.getElementById('commandsSearchBar')
-title.innerText = title.innerText.replace('{page}', window.location.href.split('/')[3].split('.')[0])
+const locationHref = window.location.href.split('/')
+const titleChange = locationHref[locationHref.length - 1].split('.')[0]
+title.innerText = title.innerText.replace('{page}', titleChange)
+const buttonsList = document.getElementById('buttonsList')
 
 const commands = [
     {
@@ -481,12 +484,7 @@ const categories = ["all", ...new Set(commands.map(command => command.category))
 function addSelectOptions() {
     for (const category of categories) {
         selectCategories.innerHTML += `<option>${category}</option>`
-        console.log(category)
     }
-}
-
-function toggleBotAvatar(x) {
-    botAvatar.hidden = x.matches;
 }
 
 function openInvite(type) {
@@ -520,11 +518,17 @@ function renderCommandCards(commands) {
 }
 
 function initializeMediaQueryListener() {
-    const x = window.matchMedia("(max-width: 770px)");
-    toggleBotAvatar(x);
-    x.addEventListener("change", function () {
-        toggleBotAvatar(x);
+    const width770 = window.matchMedia("(max-width: 770px)");
+    const width630 = window.matchMedia("(max-width: 630px)");
+    botAvatar.hidden = width770.matches;
+    const { className } = buttonsList
+    buttonsList.className = width630.matches ? className.replace('flex-row', 'flex-column') : className.replace('flex-column', 'flex-row')
+    width770.addEventListener("change", function () {
+        botAvatar.hidden = width770.matches;
     });
+    width630.addEventListener("change", function () {
+        buttonsList.className = width630.matches ? className.replace('flex-row', 'flex-column') : className.replace('flex-column', 'flex-row')
+    })
 }
 
 function updateCards() {
@@ -534,11 +538,7 @@ function updateCards() {
 
 if (window.location.href.includes('commands')) {
     addSelectOptions()
-    if (Array.isArray(commands) && commands.length > 0) {
-        renderCommandCards(commands);
-    } else {
-        console.error('Invalid commands data');
-    }
+    if (Array.isArray(commands) && commands.length > 0) renderCommandCards(commands);
 
     selectCategories.addEventListener('change', () => {
         const value = selectCategories.value.toLowerCase()

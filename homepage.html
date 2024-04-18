@@ -27,7 +27,6 @@
                 Veal
             </a>
         </div>
-        <p>&copy; Website made by Nam - 2024.</p>
         <button class="btn btn-dark fs-5 fw-medium p-2 px-4" onclick="openInvite('bot')">
             <i class="fa-solid fa-circle-plus me-2"></i>Invite
         </button>
@@ -38,21 +37,27 @@
             <p class="fs-5">Veal is a free discord bot designed to elevate your community with simplicity, versatility
                 and
                 customization.</p>
-            <button class="btn btn-primary" onclick="openInvite('server')"><i
-                    class="fa-solid fa-arrow-right-to-bracket me-2"></i>Join the support
-                server.</button>
-            <button class="btn btn-primary" onclick="openInvite('bot')"><i class="fa-solid fa-plus me-2"></i>Install /
-                invite the bot.</button>
-            <button class="btn btn-secondary" data-bs-toggle="collapse"
-                onclick="window.location.href = './commands'"><i class="fa-solid fa-list me-2"></i>List of
-                commands.</button>
         </div>
         <div>
             <img src="./assets/veal.png" height="200" width="200"
                 class="rounded-circle mx-2 border border-3 border-white" alt="veal" id="veal-avatar">
         </div>
     </div>
-    <hr/>
+    <hr>
+    <div class="container-fluid text-center">
+        <div class="d-inline-flex flex-row column-gap-1 row-gap-1" id="buttonsList">
+    <button class="btn btn-primary" onclick="openInvite('server')"><i
+        class="fa-solid fa-arrow-right-to-bracket me-2"></i>Join the support
+    server.</button>
+<button class="btn btn-primary" onclick="openInvite('bot')"><i class="fa-solid fa-plus me-2"></i>Install /
+    invite the bot.</button>
+<button class="btn btn-secondary" data-bs-toggle="collapse"
+    onclick="window.location.href = './commands.html'"><i class="fa-solid fa-list me-2"></i>List of
+    commands.</button>
+</div>
+</div>
+<hr>
+<footer class="text-center"><p>&copy; Website made by Nam - 2024.</p></footer>
 </body>
 <script src="script.js"></script>
 
