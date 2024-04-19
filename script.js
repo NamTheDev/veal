@@ -1,4 +1,5 @@
 (async () => {
+    // Get references to DOM elements
     const botAvatar = document.getElementById('veal-avatar');
     const cardsContainer = document.getElementById('cards');
     const title = document.getElementById('title')
@@ -9,27 +10,33 @@
     title.innerText = title.innerText.replace('{page}', titleChange)
     const buttonsList = document.getElementById('buttonsList')
     const commandsTotal = document.getElementById('commandsTotal')
+    const copyButton = document.getElementsByName('copyButton')
+
+    // Fetch commands data from JSON file
     const response = await fetch('./json/commands.json')
     const commandsJSON = await response.json()
 
+    // Map commands data and add index
     const commands = commandsJSON.map((command, index) => ({ ...command, index: index + 1 }))
 
-    commandsTotal.innerText = commands.length
-
+    // Extract categories from commands data
     const categories = ["all", ...new Set(commands.map(command => command.category))];
 
+    // Function to add options to select element
     function addSelectOptions() {
         for (const category of categories) {
             selectCategories.innerHTML += `<option>${category}</option>`
         }
     }
 
+    // Function to open invite link
     function openInvite(type) {
         const url = type === 'bot' ? 'https://discord.com/oauth2/authorize?client_id=1220835979003297983' : 'https://discord.gg/veal';
         const name = type === 'bot' ? 'Invite bot' : 'Join server';
         window.open(url, name, 'width=500,height=700,left=500,top=50');
     }
 
+    // Function to create HTML for command card
     function createCommandCard(command) {
         const { name, description, category, usage, index } = command;
         return `
@@ -41,17 +48,23 @@
                 <p class="card-text">
                 <p><b>Category</b> - ${category}</p>
                 <p class="fw-bold">Usage</p>
-                <button type="button" class="btn btn-dark float-end m-1"><i class="fa-regular fa-clipboard"></i></button>
-                <p class="bg-secondary-subtle rounded p-3" style="font-size:14px">${usage}</p>
+                <button type="button" class="btn btn-dark float-end m-1" name="copyButton"><i class="fa-regular fa-clipboard"></i></button>
+                <p class="bg-secondary-subtle rounded p-3" style="font-size:14px" id="usageBox">${usage}</p>
             </div>
         </div>
     `;
     }
 
+    // Function to render command cards
     function renderCommandCards(commands) {
-        cardsContainer.innerHTML = commands.map((command) => createCommandCard(command)).join('');
+        if (commands.length === 0) {
+            cardsContainer.innerHTML = `<p>No results found.</p>`;
+        } else {
+            cardsContainer.innerHTML = commands.map((command) => createCommandCard(command)).join('');
+        }
     }
 
+    // Function to handle media query listener
     function initializeMediaQueryListener() {
         const width770 = window.matchMedia("(max-width: 770px)");
         const width630 = window.matchMedia("(max-width: 630px)");
@@ -66,12 +79,18 @@
         })
     }
 
+    // Function to update cards based on search input
     function updateCards() {
         const value = commandsSearchBar.value.toLowerCase()
         renderCommandCards(commands.filter(({ name, description }) => name.toLowerCase().includes(value) || description.toLowerCase().includes(value)))
     }
 
+    // Check current page and add event listeners accordingly
     if (window.location.href.includes('commands')) {
+
+        // Display total number of commands
+        commandsTotal.innerText = commands.length
+
         addSelectOptions()
         if (Array.isArray(commands) && commands.length > 0) renderCommandCards(commands);
 
@@ -79,6 +98,24 @@
             const value = selectCategories.value.toLowerCase()
             renderCommandCards(value === 'all' ? commands : commands.filter(({ category }) => category === value))
         })
+        const clipboardIcon = '<i class="fa-regular fa-clipboard"></i>'
+        const tickEmoji = '<i class="fa-solid fa-check"></i>'
+        for (const button of copyButton) {
+            const popover = new bootstrap.Popover(button, {
+                trigger: 'click',
+                placement: 'top',
+                title: 'copied'
+            });
+            button.addEventListener('click', () => {
+                const usage = button.parentNode.querySelector('#usageBox')
+                navigator.clipboard.writeText(usage.innerText);
+                button.innerHTML = tickEmoji
+                setTimeout(() => {
+                    popover.hide();
+                    button.innerHTML = clipboardIcon
+                }, 1500)
+            })
+        }
 
         commandsSearchBar.addEventListener("input", updateCards);
 
@@ -86,7 +123,7 @@
         initializeMediaQueryListener();
     }
 
-
+    // Initialize Bootstrap tooltips
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 })()
