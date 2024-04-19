@@ -40,10 +40,9 @@
                 <hr class>
                 <p class="card-text">
                 <p><b>Category</b> - ${category}</p>
-                <p>
-                <p class="fw-bold">Usage</p><p class="bg-secondary-subtle rounded p-3">${usage}<button type="button" class="btn btn-dark ms-2"><i class="fa-regular fa-clipboard"></i></button></p>
-                </p></p>
-                </p>
+                <p class="fw-bold">Usage</p>
+                <button type="button" class="btn btn-secondary float-end"><i class="fa-regular fa-clipboard" style="font-size:px"></i></button>
+                <p class="bg-secondary-subtle rounded p-3">${usage}</p>
             </div>
         </div>
     `;
