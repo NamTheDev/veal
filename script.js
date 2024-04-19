@@ -14,6 +14,8 @@
 
     const commands = commandsJSON.map((command, index) => ({ ...command, index: index + 1 }))
 
+    commandsTotal.innerText = commands.length
+
     const categories = ["all", ...new Set(commands.map(command => command.category))];
 
     function addSelectOptions() {
@@ -31,7 +33,7 @@
     function createCommandCard(command) {
         const { name, description, category, usage, index } = command;
         return `
-        <div class="card m-2 shiny-hover rounded-5 p-3" style="width: 300px;">
+        <div class="card m-3 shiny-hover rounded-5 py-3" style="width: 300px;">
             <div class="card-body">
                 <h5 class="card-title fw-normal">${index}. <span class="fw-bold">${name}</span></h5>
                 <p class="fs-6 fw-light pt-2">${description}</p>
@@ -39,8 +41,8 @@
                 <p class="card-text">
                 <p><b>Category</b> - ${category}</p>
                 <p class="fw-bold">Usage</p>
-                <button type="button" class="btn btn-secondary float-end"><i class="fa-regular fa-clipboard" style="font-size:px"></i></button>
-                <p class="bg-secondary-subtle rounded p-3">${usage}</p>
+                <button type="button" class="btn btn-dark float-end m-1"><i class="fa-regular fa-clipboard"></i></button>
+                <p class="bg-secondary-subtle rounded p-3" style="font-size:14px">${usage}</p>
             </div>
         </div>
     `;
