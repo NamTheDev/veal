@@ -30,20 +30,20 @@
             <i class="fa-solid fa-circle-plus me-2"></i>Invite
         </button>
     </nav>
-    <div class="d-flex p-5 row-gap-2 text-center flex-column">
+    <div class="d-flex py-4 row-gap-2 text-center flex-column">
         <h1 class="display-4 fw-bold">Available commands</h1>
         <p class="fs-4"><span class="fw-bold">Total</span>: <span id="commandsTotal"></span></p>
     </div>
-    <div class="container">
+    <div class="px-5">
         <div class="d-flex justify-content-evenly">
-            <div class="input-group me-1">
-                <input type="text" class="form-control" placeholder="Search for a command" id="commandsSearchBar">
+            <div class="input-group" style="max-width: 500px;">
+                <input type="text" class="form-control" placeholder="Search" id="commandsSearchBar">
             </div>
-            <select class="form-select ms-1" id="selectCategories">
-                <option selected disabled>Select a category</option>
+            <select class="form-select" id="selectCategories" style="max-width: 500px;">
+                <option selected disabled>Select category</option>
             </select>
         </div>
-        <div class="container bg-dark-subtle rounded p-3 mt-3 d-flex flex-wrap justify-content-center" id="cards">
+        <div class=" bg-dark-subtle rounded p-3 mt-3 d-flex flex-wrap justify-content-evenly" id="cards">
         </div>
     </div>
     <hr>
