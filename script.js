@@ -14,8 +14,6 @@
 
     const commands = commandsJSON.map((command, index) => ({ ...command, index: index + 1 }))
 
-    commandsTotal.innerText = commands.length
-
     const categories = ["all", ...new Set(commands.map(command => command.category))];
 
     function addSelectOptions() {
