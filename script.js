@@ -11,6 +11,7 @@
     const buttonsList = document.getElementById('buttonsList')
     const commandsTotal = document.getElementById('commandsTotal')
     const copyButton = document.getElementsByName('copyButton')
+    const commandModal = document.getElementById('modalBody')
 
     // Fetch commands data from JSON file
     const response = await fetch('./json/commands.json')
@@ -40,7 +41,7 @@
     function createCommandCard(command) {
         const { name, description, category, usage, index } = command;
         return `
-        <div class="card m-3 shiny-hover rounded-5 py-3" style="width: 300px;">
+        <div class="card m-3 shiny-hover rounded-5 py-3" style="width: 400px;">
             <div class="card-body">
                 <h5 class="card-title fw-normal">${index}. <span class="fw-bold">${name}</span></h5>
                 <p class="fs-6 fw-light pt-2">${description}</p>
@@ -49,7 +50,7 @@
                 <p><b>Category</b> - ${category}</p>
                 <p class="fw-bold">Usage</p>
                 <button type="button" class="btn btn-dark float-end m-1" name="copyButton"><i class="fa-regular fa-clipboard"></i></button>
-                <p class="bg-secondary-subtle rounded p-3" style="font-size:14px" id="usageBox">${usage}</p>
+                <p class="bg-secondary-subtle rounded p-3" style="font-size:16px" id="usageBox">${usage}</p>
             </div>
         </div>
     `;
@@ -87,7 +88,6 @@
 
     // Check current page and add event listeners accordingly
     if (window.location.href.includes('commands')) {
-
         // Display total number of commands
         commandsTotal.innerText = commands.length
 
@@ -104,7 +104,7 @@
             const popover = new bootstrap.Popover(button, {
                 trigger: 'click',
                 placement: 'top',
-                title: 'copied'
+                content: 'copied'
             });
             button.addEventListener('click', () => {
                 const usage = button.parentNode.querySelector('#usageBox')
@@ -118,6 +118,16 @@
         }
 
         commandsSearchBar.addEventListener("input", updateCards);
+
+        const cards = cardsContainer.childNodes
+        for (const card of cards) {
+            card.addEventListener('click', ({ target }) => {
+                if (!target.className.includes('card')) return;
+                const modal = new bootstrap.Modal(document.getElementById('commandModal'))
+                commandModal.innerHTML = card.innerHTML
+               modal.show()
+            })
+        }
 
     } else if (window.location.href.includes('homepage')) {
         initializeMediaQueryListener();
