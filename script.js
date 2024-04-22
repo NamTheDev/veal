@@ -1,3 +1,10 @@
+ // Function to open invite link
+ function openInvite(type) {
+    const url = type === 'bot' ? 'https://discord.com/oauth2/authorize?client_id=1229494317115244544&permissions=8&scope=bot' : 'https://discord.gg/veal';
+    const name = type === 'bot' ? 'Invite bot' : 'Join server';
+    window.open(url, name, 'width=500,height=700,left=500,top=50');
+}
+
 (async () => {
     // Get references to DOM elements
     const botAvatar = document.getElementById('veal-avatar');
@@ -28,13 +35,6 @@
         for (const category of categories) {
             selectCategories.innerHTML += `<option>${category}</option>`
         }
-    }
-
-    // Function to open invite link
-    function openInvite(type) {
-        const url = type === 'bot' ? 'https://discord.com/oauth2/authorize?client_id=1220835979003297983' : 'https://discord.gg/veal';
-        const name = type === 'bot' ? 'Invite bot' : 'Join server';
-        window.open(url, name, 'width=500,height=700,left=500,top=50');
     }
 
     // Function to create HTML for command card
