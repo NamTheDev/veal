@@ -20,8 +20,8 @@
 <body data-bs-theme="dark">
 
     <!-- Image and text -->
-    <nav class="navbar navbar-dark bg-secondary-subtle px-4">
-        <div class="bg-black bg-gradient rounded p-1">
+    <nav class="navbar px-4 bg-dark-subtle">
+        <div class="bg-black bg-gradient rounded-4 p-1">
             <a class="navbar-brand fs-4 fw-medium">
                 <img src="./assets/veal.png" width="50" height="50" class="rounded-circle mx-2" alt="veal">
                 Veal
@@ -44,21 +44,25 @@
         </div>
     </div>
     <hr>
-    <div class="container-fluid text-center">
+    <div class="container-fluid text-center p-5">
         <div class="d-inline-flex flex-row column-gap-1 row-gap-1" id="buttonsList">
-            <button class="btn btn-primary" onclick="openInvite('server')"><i
+            <button class="btn btn-dark" onclick="openInvite('server')"><i
                     class="fa-solid fa-arrow-right-to-bracket me-2"></i>Join the support
                 server.</button>
-            <button class="btn btn-primary" onclick="openInvite('bot')"><i class="fa-solid fa-plus me-2"></i>Install /
+            <button class="btn btn-dark" onclick="openInvite('bot')"><i class="fa-solid fa-plus me-2"></i>Install /
                 invite the bot.</button>
-            <button class="btn btn-secondary" data-bs-toggle="collapse"
+            <button class="btn btn-light" data-bs-toggle="collapse"
                 onclick="window.location.href = './commands.html'"><i class="fa-solid fa-list me-2"></i>List of
                 commands.</button>
         </div>
     </div>
     <hr>
-    <footer class="text-center">
-        <p>&copy; Website made by Nam - 2024.</p>
+    <footer class="text-center p-5 bg-dark-subtle">
+        <div class="d-inline-flex flex-column bg-dark p-4 rounded-4">
+            <b class="fs-5">CREDITS:</b>
+            <span><b>Nam</b> - website designer.</span>
+            <span><b>Mel</b> - bot developer.</span>
+        </div>
     </footer>
 </body>
 <script src="script.js"></script>

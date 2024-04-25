@@ -18,8 +18,8 @@
 </head>
 
 <body data-bs-theme="dark">
-    <nav class="navbar navbar-dark bg-secondary-subtle px-4">
-        <div class="bg-black bg-gradient rounded p-1" data-bs-toggle="tooltip" data-bs-placement="bottom"
+    <nav class="navbar bg-dark-subtle px-4">
+        <div class="bg-black bg-gradient rounded-4 p-1" data-bs-toggle="tooltip" data-bs-placement="bottom"
             data-bs-title="Go back to homepage">
             <a class="navbar-brand fs-4 fw-medium" href="./homepage.html">
                 <img src="./assets/veal.png" width="50" height="50" class="rounded-circle mx-2" alt="veal">
@@ -30,9 +30,9 @@
             <i class="fa-solid fa-circle-plus me-2"></i>Invite
         </button>
     </nav>
-    <div class="d-flex py-4 row-gap-2 text-center flex-column">
+    <div class="d-flex py-5 row-gap-2 text-center flex-column my-5">
         <h1 class="display-4 fw-bold">Available commands</h1>
-        <p class="fs-4"><span class="fw-bold">Total</span>: <span id="commandsTotal"></span></p>
+        <p class="fs-2"><span class="fw-bold">Total</span>: <span id="commandsTotal"></span></p>
     </div>
     <div class="px-3">
         <div class="d-flex justify-content-evenly">
@@ -43,8 +43,8 @@
                 <option selected disabled>Select category</option>
             </select>
         </div>
-        <div class="container-fluid bg-dark-subtle rounded py-4 mt-3 d-flex flex-wrap justify-content-evenly"
-            data-bs-toggle="modal" id="cards">
+        <div class="container-fluid rounded-5 py-4 mt-3 d-flex flex-wrap justify-content-evenly" data-bs-toggle="modal"
+            id="cards" style="--bs-border-opacity: .4;">
         </div>
     </div>
     <div class="modal" tabindex="-1" id="commandModal">
@@ -55,14 +55,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="modalBody"></div>
-                </div>
-                </div>
             </div>
         </div>
     </div>
+    </div>
+    </div>
     <hr>
-    <footer class="text-center">
-        <p>&copy; Website made by Nam - 2024.</p>
+    <footer class="text-center p-5 bg-dark-subtle">
+        <div class="d-inline-flex flex-column bg-dark p-4 rounded-4">
+            <b class="fs-5">CREDITS:</b>
+            <span><b>Nam</b> - website designer.</span>
+            <span><b>Mel</b> - bot developer.</span>
+        </div>
     </footer>
 </body>
 <script src="script.js"></script>
