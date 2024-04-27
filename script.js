@@ -35,8 +35,8 @@ function openInvite(type) {
                 <p class="card-text">
                 <p><b>Category</b> - ${category}</p>
                 <p class="fw-bold">Usage</p>
-                <button type="button" class="btn btn-dark float-end m-1" name="copyButton"><i class="fa-regular fa-clipboard"></i></button>
-                <p class="bg-black bg-opacity-50 rounded-3 p-3 border" style="font-size:16px;" id="usageBox">${usage}</p>
+                <button type="button" class="btn btn-transparent float-end m-1" name="copyButton"><i class="fa-regular fa-clipboard"></i></button>
+                <p class="bg-black bg-opacity-50 rounded-4 p-3 border" style="font-size:16px;" id="usageBox">${usage}</p>
             </div>
         </div>
     `;
@@ -136,7 +136,7 @@ function openInvite(type) {
         initializeMediaQueryListener();
     } else if (window.location.href.includes('authorization/spotify') && window.location.href.includes('?code=')) {
         const code = window.location.href.split("?code=")[1]
-        if (!code || code.length < 290) return window.location.href = '/homepage.html';
+        if (!code || code.length < 290) return window.location.href = './homepage.html';
         codeCopyButton.addEventListener('click', () => {
             const originalIcon = '<i class="fa-solid fa-copy fs-3"></i>'
             const copiedIcon = '<i class="fa-solid fa-check fs-3"></i>'
@@ -147,7 +147,7 @@ function openInvite(type) {
             }, 1500)
         })
     } else {
-        window.location.href = "/homepage.html"
+        window.location.href = "./homepage.html"
     }
 
     // Initialize Bootstrap tooltips
