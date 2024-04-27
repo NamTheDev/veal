@@ -19,7 +19,7 @@ function openInvite(type) {
     // Function to add options to select element
     function addSelectOptions(categories) {
         for (const category of categories) {
-            selectCategories.innerHTML += `<option>${category}</option>`
+            selectCategories.innerHTML += `<option class="bg-black">${category}</option>`
         }
     }
 
@@ -29,14 +29,14 @@ function openInvite(type) {
         return `
         <div class="card m-3 shiny-hover rounded-5 py-3 bg-transparent bg-gradient" style="width: 400px;">
             <div class="card-body">
-                <h5 class="card-title fw-normal">${index}. <span class="fw-bold">${name}</span></h5>
+                <h5 class="card-title fw-normal">${index}. <span class="fw-bold" id="cardTitle">${name}</span></h5>
                 <p class="fs-6 fw-light pt-2">${description}</p>
                 <hr class>
                 <p class="card-text">
                 <p><b>Category</b> - ${category}</p>
                 <p class="fw-bold">Usage</p>
                 <button type="button" class="btn btn-dark float-end m-1" name="copyButton"><i class="fa-regular fa-clipboard"></i></button>
-                <p class="bg-secondary-subtle rounded p-3" style="font-size:16px" id="usageBox">${usage}</p>
+                <p class="bg-black bg-opacity-50 rounded-3 p-3 border" style="font-size:16px;" id="usageBox">${usage}</p>
             </div>
         </div>
     `;
@@ -44,9 +44,12 @@ function openInvite(type) {
 
     // Function to render command cards
     function renderCommandCards(commands) {
+        const wrapper = document.querySelector('.wrapper')
         if (commands.length === 0) {
+            wrapper.classList.replace('fit', 'full')
             cardsContainer.innerHTML = `<p>No results found.</p>`;
         } else {
+            if(wrapper.classList.contains('full')) wrapper.classList.replace('full', 'fit')
             cardsContainer.innerHTML = commands.map((command) => createCommandCard(command)).join('');
         }
     }
@@ -67,9 +70,9 @@ function openInvite(type) {
     }
 
     // Function to update cards based on search input
-    function updateCards() {
+    function updateCards(commands) {
         const value = commandsSearchBar.value.toLowerCase()
-        renderCommandCards(commands.filter(({ name, description }) => name.toLowerCase().includes(value) || description.toLowerCase().includes(value)))
+        renderCommandCards(commands.filter(({ name }) => name.toLowerCase().includes(value)))
     }
 
     // Check current page and add event listeners accordingly
@@ -90,6 +93,7 @@ function openInvite(type) {
         addSelectOptions(categories)
         if (Array.isArray(commands) && commands.length > 0) renderCommandCards(commands);
 
+
         selectCategories.addEventListener('change', () => {
             const value = selectCategories.value.toLowerCase()
             renderCommandCards(value === 'all' ? commands : commands.filter(({ category }) => category === value))
@@ -97,34 +101,49 @@ function openInvite(type) {
         const clipboardIcon = '<i class="fa-regular fa-clipboard"></i>'
         const tickEmoji = '<i class="fa-solid fa-check"></i>'
         for (const button of copyButton) {
-            const popover = new bootstrap.Popover(button, {
-                trigger: 'click',
-                placement: 'top',
-                content: 'copied'
-            });
             button.addEventListener('click', () => {
                 const usage = button.parentNode.querySelector('#usageBox')
                 navigator.clipboard.writeText(usage.innerText);
                 button.innerHTML = tickEmoji
                 setTimeout(() => {
-                    popover.hide();
                     button.innerHTML = clipboardIcon
                 }, 1500)
             })
         }
 
-        commandsSearchBar.addEventListener("input", updateCards);
+        commandsSearchBar.addEventListener("input", () => {
+            const value = commandsSearchBar.value.toLowerCase();
+            const re = new RegExp(value, 'i');
+            updateCards(commands);
+            for (const card of cardsContainer.children) {
+                const title = card.querySelector('#cardTitle');
+                if (!title) continue;
+                const highlightedText = card.querySelector('.bg-secondary');
+                if (re.test(title.innerText)) {
+                    if (!highlightedText) {
+                        title.innerHTML = title.innerHTML.replace(re, '<span class="bg-secondary">$&</span>');
+                    }
+                } else {
+                    if (highlightedText) {
+                        title.innerHTML = title.innerHTML.replace(highlightedText.outerHTML, highlightedText.innerText);
+                    }
+                }
+            }
+        });
+
 
     } else if (window.location.href.includes('homepage')) {
         initializeMediaQueryListener();
     } else if (window.location.href.includes('authorization/spotify') && window.location.href.includes('?code=')) {
         const code = window.location.href.split("?code=")[1]
-        if(!code || code.length < 290) return window.location.href = '/homepage.html';
-        const originalIcon = '<i class="fa-solid fa-copy"></i>'
+        if (!code || code.length < 290) return window.location.href = '/homepage.html';
         codeCopyButton.addEventListener('click', () => {
-            codeCopyButton.innerHTML = '<i class="fa-solid fa-check"></i>'
+            const originalIcon = '<i class="fa-solid fa-copy fs-3"></i>'
+            const copiedIcon = '<i class="fa-solid fa-check fs-3"></i>'
+            codeCopyButton.innerHTML = codeCopyButton.innerHTML.replace(originalIcon, copiedIcon)
+            navigator.clipboard.writeText(code);
             setTimeout(() => {
-                codeCopyButton.innerHTML = originalIcon
+                codeCopyButton.innerHTML = codeCopyButton.innerHTML.replace(copiedIcon, originalIcon)
             }, 1500)
         })
     } else {
