@@ -29,14 +29,10 @@ function openInvite(type) {
         return `
         <div class="card m-3 shiny-hover rounded-5 py-3 bg-transparent bg-gradient" style="width: 400px;">
             <div class="card-body">
-                <h5 class="card-title fw-normal">${index}. <span class="fw-bold" id="cardTitle">${name}</span></h5>
+                <h5 class="card-title fw-normal">${index}. <span class="fw-bold" id="cardTitle">${name}</span><button type="button" class="btn btn-transparent float-end m-1" name="copyButton"><i class="fa-regular fa-clipboard"></i></button></h5>
                 <p class="fs-6 fw-light pt-2">${description}</p>
                 <hr class>
                 <p class="card-text">
-                <p><b>Category</b> - ${category}</p>
-                <p class="fw-bold">Usage</p>
-                <button type="button" class="btn btn-transparent float-end m-1" name="copyButton"><i class="fa-regular fa-clipboard"></i></button>
-                <p class="bg-black bg-opacity-50 rounded-4 p-3 border" style="font-size:16px;" id="usageBox">${usage}</p>
             </div>
         </div>
     `;
@@ -49,7 +45,7 @@ function openInvite(type) {
             wrapper.classList.replace('fit', 'full')
             cardsContainer.innerHTML = `<p>No results found.</p>`;
         } else {
-            if(wrapper.classList.contains('full')) wrapper.classList.replace('full', 'fit')
+            if (wrapper.classList.contains('full')) wrapper.classList.replace('full', 'fit')
             cardsContainer.innerHTML = commands.map((command) => createCommandCard(command)).join('');
         }
     }
