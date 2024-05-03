@@ -1,472 +1,244 @@
 [
     {
-        "name": "afk",
-        "description": "Set AFK status",
-        "usage": ".afk [reason]",
-        "category": "utilities"
-    },
-    {
-        "name": "lf",
-        "description": "List online friends",
-        "usage": ".lf",
-        "category": "utilities"
-    },
-    {
-        "name": "np",
-        "description": "Show current activity",
-        "usage": ".np",
-        "category": "utilities"
-    },
-    {
-        "name": "bal",
-        "description": "Check account balance",
-        "usage": ".bal",
-        "category": "utilities"
-    },
-    {
-        "name": "coinflip",
-        "description": "Flip a coin",
-        "usage": ".coinflip",
-        "category": "utilities"
-    },
-    {
-        "name": "crime",
-        "description": "Commit a crime (for fun)",
-        "usage": ".crime",
-        "category": "utilities"
-    },
-    {
-        "name": "daily",
-        "description": "Claim daily reward",
-        "usage": ".daily",
-        "category": "utilities"
-    },
-    {
-        "name": "deposit",
-        "description": "Deposit coins",
-        "usage": ".deposit [amount]",
-        "category": "utilities"
-    },
-    {
-        "name": "gamble",
-        "description": "Gamble coins",
-        "usage": ".gamble [amount]",
-        "category": "utilities"
-    },
-    {
-        "name": "give",
-        "description": "Give coins to another user",
-        "usage": ".give [amount] [recipient]",
-        "category": "utilities"
-    },
-    {
-        "name": "leaderboard",
-        "description": "Show top users",
-        "usage": ".leaderboard",
-        "category": "utilities"
-    },
-    {
-        "name": "open",
-        "description": "Open something",
-        "usage": ".open [something]",
-        "category": "utilities"
-    },
-    {
-        "name": "rob",
-        "description": "Attempt to rob a user",
-        "usage": ".rob [user]",
-        "category": "utilities"
-    },
-    {
-        "name": "slut",
-        "description": "Become a slut (for fun)",
-        "usage": ".slut",
-        "category": "utilities"
-    },
-    {
-        "name": "withdraw",
-        "description": "Withdraw coins",
-        "usage": ".withdraw [amount]",
-        "category": "utilities"
-    },
-    {
-        "name": "work",
-        "description": "Work to earn coins",
-        "usage": ".work",
-        "category": "utilities"
-    },
-    {
-        "name": "autorole",
-        "description": "Manage auto roles",
-        "usage": ".autorole [options]",
-        "category": "utilities"
-    },
-    {
-        "name": "role",
-        "description": "Manage roles",
-        "usage": ".role [options]",
-        "category": "utilities"
-    },
-    {
-        "name": "snipe",
-        "description": "Snipe something",
-        "usage": ".snipe [something]",
-        "category": "utilities"
-    },
-    {
-        "name": "tz",
-        "description": "Show time in a timezone",
-        "usage": ".tz [timezone]",
-        "category": "utilities"
-    },
-    {
-        "name": "vanity",
-        "description": "Set custom vanity URL",
-        "usage": ".vanity [URL]",
-        "category": "utilities"
-    },
-    {
-        "name": "8ball",
-        "description": "Ask the magic 8-ball",
-        "usage": ".8ball [question]",
-        "category": "utilities"
-    },
-    {
-        "name": "advice",
-        "description": "Get random advice",
-        "usage": ".advice",
-        "category": "utilities"
-    },
-    {
-        "name": "cat",
-        "description": "Get random cat picture or gif",
-        "usage": ".cat",
-        "category": "utilities"
-    },
-    {
-        "name": "dog",
-        "description": "Get random dog picture or gif",
-        "usage": ".dog",
-        "category": "utilities"
-    },
-    {
-        "name": "emoji",
-        "description": "Convert text to emojis",
-        "usage": ".emoji [text]",
-        "category": "utilities"
-    },
-    {
-        "name": "invite",
-        "description": "Get bot's invite link",
-        "usage": ".invite",
-        "category": "utilities"
-    },
-    {
-        "name": "joke",
-        "description": "Get random joke",
-        "usage": ".joke",
-        "category": "utilities"
-    },
-    {
-        "name": "link",
-        "description": "Generate shareable link",
-        "usage": ".link [options]",
-        "category": "utilities"
-    },
-    {
-        "name": "membercount",
-        "description": "Show server member count",
-        "usage": ".membercount",
-        "category": "utilities"
-    },
-    {
-        "name": "network",
-        "description": "Manage network settings",
-        "usage": ".network [options]",
-        "category": "utilities"
-    },
-    {
-        "name": "ping",
-        "description": "Check bot's ping",
-        "usage": ".ping",
-        "category": "utilities"
-    },
-    {
-        "name": "rizz",
-        "description": "Play Rock, Paper, Scissors",
-        "usage": ".rizz [choice]",
-        "category": "utilities"
-    },
-    {
-        "name": "translate",
-        "description": "Translate text",
-        "usage": ".translate [text] [target language]",
-        "category": "utilities"
-    },
-    {
-        "name": "meaning",
-        "description": "Get word meaning",
-        "usage": ".meaning [word]",
-        "category": "utilities"
-    },
-    {
-        "name": "ban",
-        "description": "Ban a user",
-        "usage": ".ban [user] [reason]",
-        "category": "moderation"
-    },
-    {
-        "name": "clear",
-        "description": "Clear messages",
-        "usage": ".clear [amount]",
-        "category": "moderation"
-    },
-    {
-        "name": "fn",
-        "description": "Execute custom function",
-        "usage": ".fn [function]",
-        "category": "moderation"
-    },
-    {
-        "name": "hide",
-        "description": "Hide a channel",
-        "usage": ".hide [channel]",
-        "category": "moderation"
-    },
-    {
-        "name": "imute",
-        "description": "Instantly mute a user",
-        "usage": ".imute [user] [reason]",
-        "category": "moderation"
-    },
-    {
-        "name": "iunmute",
-        "description": "Instantly unmute a user",
-        "usage": ".iunmute [user]",
-        "category": "moderation"
-    },
-    {
-       
-
- "name": "kick",
-        "description": "Kick a user",
-        "usage": ".kick [user] [reason]",
-        "category": "moderation"
-    },
-    {
-        "name": "lock",
-        "description": "Lock a channel",
-        "usage": ".lock [channel]",
-        "category": "moderation"
-    },
-    {
-        "name": "mute",
-        "description": "Mute a user",
-        "usage": ".mute [user] [time] [reason]",
-        "category": "moderation"
-    },
-    {
-        "name": "nick",
-        "description": "Change user's nickname",
-        "usage": ".nick [user] [new nickname]",
-        "category": "moderation"
-    },
-    {
-        "name": "nuke",
-        "description": "Delete all messages in a channel and recreate it",
-        "usage": ".nuke",
-        "category": "moderation"
-    },
-    {
-        "name": "pin",
-        "description": "Pin a message",
-        "usage": ".pin [message ID]",
-        "category": "moderation"
-    },
-    {
-        "name": "rmute",
-        "description": "Remove user's mute",
-        "usage": ".rmute [user]",
-        "category": "moderation"
-    },
-    {
-        "name": "runmute",
-        "description": "Remove user's mute instantly",
-        "usage": ".runmute [user]",
-        "category": "moderation"
-    },
-    {
-        "name": "topic",
-        "description": "Change channel topic",
-        "usage": ".topic [channel] [new topic]",
-        "category": "moderation"
-    },
-    {
-        "name": "unban",
-        "description": "Unban a user",
-        "usage": ".unban [user]",
-        "category": "moderation"
-    },
-    {
-        "name": "unhide",
-        "description": "Unhide a hidden channel",
-        "usage": ".unhide [channel]",
-        "category": "moderation"
-    },
-    {
-        "name": "unlock",
-        "description": "Unlock a locked channel",
-        "usage": ".unlock [channel]",
-        "category": "moderation"
-    },
-    {
-        "name": "unmute",
-        "description": "Unmute a user",
-        "usage": ".unmute [user]",
-        "category": "moderation"
-    },
-    {
-        "name": "unpin",
-        "description": "Unpin a message",
-        "usage": ".unpin [message ID]",
-        "category": "moderation"
-    },
-    {
-        "name": "bite",
-        "description": "Bite someone",
-        "usage": ".bite [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "bonk",
-        "description": "Bonk someone",
-        "usage": ".bonk [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "boop",
-        "description": "Boop someone",
-        "usage": ".boop [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "cuddle",
-        "description": "Cuddle someone",
-        "usage": ".cuddle [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "highfive",
-        "description": "Highfive someone",
-        "usage": ".highfive [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "hug",
-        "description": "Hug someone",
-        "usage": ".hug [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "kill",
-        "description": "Kill someone (for fun)",
-        "usage": ".kill [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "kiss",
-        "description": "Kiss someone",
-        "usage": ".kiss [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "lick",
-        "description": "Lick someone",
-        "usage": ".lick [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "nom",
-        "description": "Nom someone",
-        "usage": ".nom [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "pat",
-        "description": "Pat someone",
-        "usage": ".pat [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "poke",
-        "description": "Poke someone",
-        "usage": ".poke [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "punch",
-        "description": "Punch someone",
-        "usage": ".punch [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "slap",
-        "description": "Slap someone",
-        "usage": ".slap [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "stare",
-        "description": "Stare at someone",
-        "usage": ".stare [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "tickle",
-        "description": "Tickle someone",
-        "usage": ".tickle [user]",
-        "category": "interactions"
-    },
-    {
-        "name": "wave",
-        "description": "Wave at someone",
-        "usage": ".wave [user]",
-        "category": "interactions"
-    },
-    {
         "name": "avatar",
-        "description": "Get user's avatar",
-        "usage": ".avatar [user]",
-        "category": "utilities"
-    },
-    {
-        "name": "serveravatar",
-        "description": "Get server's avatar",
-        "usage": ".serveravatar",
-        "category": "utilities"
+        "category": "Utility",
+        "description": "Display user's avatar",
+        "aliases": [
+            "av"
+        ],
+        "arguments": "none",
+        "usage": "avatar"
     },
     {
         "name": "multiavatar",
-        "description": "Get multiple users' avatars",
-        "usage": ".multiavatar [users]",
-        "category": "utilities"
+        "category": "Utility",
+        "description": "Display multiple avatars",
+        "aliases": [
+            "mav"
+        ],
+        "arguments": "none",
+        "usage": "multiavatar"
+    },
+    {
+        "name": "serveravatar",
+        "category": "Utility",
+        "description": "Display server's avatar",
+        "aliases": [
+            "sav"
+        ],
+        "arguments": "none",
+        "usage": "serveravatar"
     },
     {
         "name": "banner",
-        "description": "Get server's banner",
-        "usage": ".banner",
-        "category": "utilities"
+        "category": "Utility",
+        "description": "Display user's banner",
+        "aliases": [
+            "bnr"
+        ],
+        "arguments": "none",
+        "usage": "banner"
     },
     {
         "name": "guildicon",
-        "description": "Get server's icon",
-        "usage": ".guildicon",
-        "category": "utilities"
+        "category": "Utility",
+        "description": "Display guild's icon",
+        "aliases": [
+            "gi"
+        ],
+        "arguments": "none",
+        "usage": "guildicon"
     },
     {
         "name": "guildbanner",
-        "description": "Get server's banner",
-        "usage": ".guildbanner",
-        "category": "utilities"
+        "category": "Utility",
+        "description": "Display guild's banner",
+        "aliases": [
+            "gb"
+        ],
+        "arguments": "none",
+        "usage": "guildbanner"
+    },
+    {
+        "name": "meaning",
+        "category": "Fun",
+        "description": "Find the meaning of a word",
+        "aliases": [
+            "define"
+        ],
+        "arguments": "word",
+        "usage": "meaning [word]"
+    },
+    {
+        "name": "translate",
+        "category": "Fun",
+        "description": "Translate text",
+        "aliases": [
+            "tr"
+        ],
+        "arguments": "text, language",
+        "usage": "translate [text] [language]"
+    },
+    {
+        "name": "clearnamehistory",
+        "category": "History",
+        "description": "Clear user's name history",
+        "aliases": [
+            "cnh"
+        ],
+        "arguments": "user",
+        "usage": "clearnamehistory [user]"
+    },
+    {
+        "name": "namehistory",
+        "category": "History",
+        "description": "Show user's name history",
+        "aliases": [
+            "nh"
+        ],
+        "arguments": "user",
+        "usage": "namehistory [user]"
+    },
+    {
+        "name": "snipe",
+        "category": "Snipe",
+        "description": "Snipe the last deleted message",
+        "aliases": [],
+        "arguments": "none",
+        "usage": "snipe"
+    },
+    {
+        "name": "editsnipe",
+        "category": "Snipe",
+        "description": "Display last edited message",
+        "aliases": [
+            "es"
+        ],
+        "arguments": "none",
+        "usage": "editsnipe"
+    },
+    {
+        "name": "clearsnipe",
+        "category": "Snipe",
+        "description": "Clear last sniped message",
+        "aliases": [
+            "cs"
+        ],
+        "arguments": "none",
+        "usage": "clearsnipe"
+    },
+    {
+        "name": "afk",
+        "category": "Various",
+        "description": "Set yourself as AFK",
+        "aliases": [],
+        "arguments": "reason",
+        "usage": "afk [reason]"
+    },
+    {
+        "name": "timezone",
+        "category": "Utility",
+        "description": "Show your time",
+        "aliases": [
+            "tz"
+        ],
+        "arguments": "none",
+        "usage": "timezone"
+    },
+    {
+        "name": "autorole",
+        "category": "Autorole",
+        "description": "Set autorole for new members",
+        "aliases": [],
+        "arguments": "role",
+        "usage": "autorole [role]"
+    },
+    {
+        "name": "Reply",
+        "category": "Reply",
+        "description": "Reply to a user",
+        "aliases": [],
+        "arguments": "user, message",
+        "usage": "Reply [user] [message]"
+    },
+    {
+        "name": "welcome",
+        "category": "Utility",
+        "description": "Display welcome message",
+        "aliases": [],
+        "arguments": "none",
+        "usage": "welcome"
+    },
+    {
+        "name": "fm",
+        "category": "LastFM",
+        "description": "Show your current playing song",
+        "aliases": [],
+        "arguments": "user",
+        "usage": "fm [user]"
+    },
+    {
+        "name": "setprefix",
+        "category": "Prefix",
+        "description": "Set bot's prefix",
+        "aliases": [],
+        "arguments": "prefix",
+        "usage": "setprefix [prefix]"
+    },
+    {
+        "name": "invite",
+        "category": "Server",
+        "description": "Get bot invite link",
+        "aliases": [],
+        "arguments": "none",
+        "usage": "invite"
+    },
+    {
+        "name": "ping",
+        "category": "Server",
+        "description": "Check bot's ping",
+        "aliases": [],
+        "arguments": "none",
+        "usage": "ping"
+    },
+    {
+        "name": "help",
+        "category": "Server",
+        "description": "Display help message",
+        "aliases": [],
+        "arguments": "none",
+        "usage": "help"
+    },
+    {
+        "name": "truth",
+        "category": "TruthOrDare",
+        "description": "Get a truth",
+        "aliases": [],
+        "arguments": "none",
+        "usage": "truth"
+    },
+    {
+        "name": "dare",
+        "category": "TruthOrDare",
+        "description": "Get a dare",
+        "aliases": [],
+        "arguments": "none",
+        "usage": "dare"
+    },
+    {
+        "name": "nhie",
+        "category": "Tod2",
+        "description": "Never have I ever question",
+        "aliases": [],
+        "arguments": "none",
+        "usage": "nhie"
+    },
+    {
+        "name": "wyr",
+        "category": "Tod2",
+        "description": "Would you rather question",
+        "aliases": [],
+        "arguments": "none",
+        "usage": "wyr"
     }
 ]

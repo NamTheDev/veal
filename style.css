@@ -1,23 +1,10 @@
 body {
-    background-image: url('./assets/background.png');
-    background-blend-mode: overlay;
-    background-repeat: repeat-y;
-    background-position: center;
-    backdrop-filter: blur(5px);
     -webkit-user-select: none;
     /* Safari */
     -ms-user-select: none;
     /* IE 10 and IE 11 */
     user-select: none;
     /* Standard syntax */
-}
-
-body.full {
-    background-size: cover;
-}
-
-body.fit {
-    background-size: contain;
 }
 
 body::-webkit-scrollbar {
@@ -33,10 +20,15 @@ body::-webkit-scrollbar {
     box-shadow: inset 0px 0px 20px rgba(255, 255, 255, 0.534);
 }
 
-.fit.wrapper {
-    height: fit-content
+.wrapper {
+    backdrop-filter: blur(15px) brightness(70%); 
+    min-height: 100vh;
 }
 
-.full.wrapper {
-    height: 100vh
+.background-image {
+    background-image: url('./assets/background.gif');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

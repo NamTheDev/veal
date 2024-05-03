@@ -42,10 +42,10 @@ function openInvite(type) {
     function renderCommandCards(commands) {
         const wrapper = document.querySelector('.wrapper')
         if (commands.length === 0) {
-            wrapper.classList.replace('fit', 'full')
+            // wrapper.classList.replace('fit', 'full')
             cardsContainer.innerHTML = `<p>No results found.</p>`;
         } else {
-            if (wrapper.classList.contains('full')) wrapper.classList.replace('full', 'fit')
+            // if (wrapper.classList.contains('full')) wrapper.classList.replace('full', 'fit')
             cardsContainer.innerHTML = commands.map((command) => createCommandCard(command)).join('');
         }
     }
@@ -92,7 +92,7 @@ function openInvite(type) {
 
         selectCategories.addEventListener('change', () => {
             const value = selectCategories.value.toLowerCase()
-            renderCommandCards(value === 'all' ? commands : commands.filter(({ category }) => category === value))
+            renderCommandCards(value === 'all' ? commands : commands.filter(({ category }) => category.toLowerCase() === value.toLowerCase()))
         })
         const clipboardIcon = '<i class="fa-regular fa-clipboard"></i>'
         const tickEmoji = '<i class="fa-solid fa-check"></i>'

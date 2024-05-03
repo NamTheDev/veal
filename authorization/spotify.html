@@ -17,12 +17,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 </head>
 
-<body data-bs-theme="dark" class="full">
+<body data-bs-theme="dark">
 
     <!-- Image and text -->
-    <nav class="navbar px-4 bg-dark-subtle">
+    <nav class="navbar bg-black bg-opacity-75 px-4 mx-1 rounded-3">
         <div class="bg-black bg-gradient rounded-4 p-1" data-bs-toggle="tooltip" data-bs-placement="bottom"
-        data-bs-title="Go back to homepage">
+            data-bs-title="Go back to homepage">
             <a class="navbar-brand fs-4 fw-medium" href="../homepage.html">
                 <img src="../assets/veal.png" width="50" height="50" class="rounded-circle mx-2" alt="veal">
                 Veal
@@ -32,22 +32,25 @@
             <i class="fa-solid fa-circle-plus me-2"></i>Invite
         </button>
     </nav>
-    <div class="full wrapper">
-    <div class="p-5 text-center">
-        <h1 class="display-2 fw-bold mb-5"><i class="fa-brands fa-spotify" style="color: #1ed760;"></i> <span style="color:#1ed760">Spotify</span> authorization</i></h1>
-        <h1 class="fw-bold">Copy the <u>code</u> below.</h1>
-        <br>
-        <div class="container-fluid">
-            <div class="d-inline-flex flex-column row-gap-3">
-                <h3 class="text-center"><i class="fa-solid fa-arrow-down"></i></h3>
-                <button class="btn btn-dark p-3 hstack gap-3" id="codeCopyButton">
-                    <i class="fa-solid fa-copy fs-3"></i>
-                    <div class="vr"></div>
-                    <h4>copy code</h4>
-                </button>
+    <div class="background-image m-1">
+        <div class="wrapper">
+            <div class="p-5 text-center">
+                <h1 class="display-2 fw-bold mb-5"><i class="fa-brands fa-spotify" style="color: #1ed760;"></i> <span
+                        style="color:#1ed760">Spotify</span> authorization</i></h1>
+                <h1 class="fw-bold">Copy the <u>code</u> below.</h1>
+                <br>
+                <div class="container-fluid">
+                    <div class="d-inline-flex flex-column row-gap-3">
+                        <h3 class="text-center"><i class="fa-solid fa-arrow-down"></i></h3>
+                        <button class="btn btn-dark p-3 hstack gap-3" id="codeCopyButton">
+                            <i class="fa-solid fa-copy fs-3"></i>
+                            <div class="vr"></div>
+                            <h4>copy code</h4>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 <script src="../script.js"></script>
