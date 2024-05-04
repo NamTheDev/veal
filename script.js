@@ -130,9 +130,9 @@ function openInvite(type) {
 
     } else if (window.location.href.includes('homepage')) {
         initializeMediaQueryListener();
-    } else if (window.location.href.includes('authorization/spotify') && window.location.href.includes('?code=')) {
+    } else if (window.location.href.includes('authorization/spotify')) {
         const code = window.location.href.split("?code=")[1]
-        if (!code || code.length < 290) return window.location.href = './homepage.html';
+        if (!code || code.length < 290) return window.location.href = '../homepage.html';
         codeCopyButton.addEventListener('click', () => {
             const originalIcon = '<i class="fa-solid fa-copy fs-3"></i>'
             const copiedIcon = '<i class="fa-solid fa-check fs-3"></i>'
