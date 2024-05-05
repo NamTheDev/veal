@@ -1,3 +1,12 @@
+// Get references to DOM elements
+const botAvatar = document.getElementById('veal-avatar');
+const cardsContainer = document.getElementById('cards');
+const selectCategories = document.getElementById('selectCategories')
+const commandsSearchBar = document.getElementById('commandsSearchBar')
+const buttonsList = document.getElementById('buttonsList')
+const commandsTotal = document.getElementById('commandsTotal')
+const codeCopyButton = document.getElementById('codeCopyButton')
+
 // Function to open invite link
 function openInvite(type) {
     const url = type === 'bot' ? 'https://discord.com/oauth2/authorize?client_id=1229494317115244544&permissions=8&scope=bot' : 'https://discord.gg/veal';
@@ -5,17 +14,19 @@ function openInvite(type) {
     window.open(url, name, 'width=500,height=700,left=500,top=50');
 }
 
-(async () => {
-    // Get references to DOM elements
-    const botAvatar = document.getElementById('veal-avatar');
-    const cardsContainer = document.getElementById('cards');
-    const selectCategories = document.getElementById('selectCategories')
-    const commandsSearchBar = document.getElementById('commandsSearchBar')
-    const buttonsList = document.getElementById('buttonsList')
-    const commandsTotal = document.getElementById('commandsTotal')
-    const copyButton = document.getElementsByName('copyButton')
-    const codeCopyButton = document.getElementById('codeCopyButton')
+const clipboardIcon = '<i class="fa-regular fa-clipboard"></i>'
+const tickEmoji = '<i class="fa-solid fa-check"></i>'
+function copyUsage(button) {
+    const usage = button.getAttribute('usage')
+    navigator.clipboard.writeText(usage);
+    button.innerHTML = tickEmoji
+    setTimeout(() => {
+        button.innerHTML = clipboardIcon
+    }, 1500)
+}
 
+
+(async () => {
     // Function to add options to select element
     function addSelectOptions(categories) {
         for (const category of categories) {
@@ -24,15 +35,30 @@ function openInvite(type) {
     }
 
     // Function to create HTML for command card
+    /**
+     * 
+     * @param {{
+     * "name": String, 
+     * "category": string, 
+     * "description": string, 
+     * "aliases": string[], 
+     * "arguments": string, 
+     * "usage": string
+     * }} command 
+     * @returns 
+     */
     function createCommandCard(command) {
-        const { name, description, category, usage, index } = command;
+        const { name, description, aliases, arguments, usage, index } = command;
         return `
         <div class="card m-3 shiny-hover rounded-5 py-3 bg-transparent bg-gradient" style="width: 400px;">
             <div class="card-body">
-                <h5 class="card-title fw-normal">${index}. <span class="fw-bold" id="cardTitle">${name}</span><button type="button" class="btn btn-transparent float-end m-1" name="copyButton"><i class="fa-regular fa-clipboard"></i></button></h5>
+                <h5 class="card-title fw-normal">${index}. <span class="fw-bold" id="cardTitle">${name}</span><button type="button" class="btn btn-transparent border border-0 float-end m-1" onclick="copyUsage(this)" usage="${usage}"><i class="fa-regular fa-clipboard"></i></button></h5>
                 <p class="fs-6 fw-light pt-2">${description}</p>
-                <hr class>
-                <p class="card-text">
+                <hr>
+                <b>Aliases</b>
+                <p class="bg-black bg-opacity-25 px-3 py-2 my-2 rounded-3 fs-6 fw-light mb-3">${aliases.join(', ') || "none"}</p>
+                <b>Arguments</b>
+                <p class="bg-black bg-opacity-25 px-3 py-2 my-2 rounded-3 fs-6 fw-light mb-3">${arguments || "none"}</p>
             </div>
         </div>
     `;
@@ -80,9 +106,15 @@ function openInvite(type) {
         // Map commands data and add index
         const commands = commandsJSON.map((command, index) => ({ ...command, index: index + 1 }))
 
-        // Extract categories from commands data
-        const categories = ["all", ...new Set(commands.map(command => command.category))];
+        const categoryCounts = {}
+        commands.forEach(command => {
+            const {category} = command;
+            categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+        });
 
+        // Extract categories from commands data
+        const categories = [`All (${commands.length})`, ...new Set(commands.map(({category}) => `${category} (${categoryCounts[category]})`))];
+        console.log(categories)
         // Display total number of commands
         commandsTotal.innerText = commands.length
 
@@ -91,21 +123,9 @@ function openInvite(type) {
 
 
         selectCategories.addEventListener('change', () => {
-            const value = selectCategories.value.toLowerCase()
-            renderCommandCards(value === 'all' ? commands : commands.filter(({ category }) => category.toLowerCase() === value.toLowerCase()))
+            const value = selectCategories.value.split(' ')[0]
+            renderCommandCards(value === 'All' ? commands : commands.filter(({ category }) => category === value))
         })
-        const clipboardIcon = '<i class="fa-regular fa-clipboard"></i>'
-        const tickEmoji = '<i class="fa-solid fa-check"></i>'
-        for (const button of copyButton) {
-            button.addEventListener('click', () => {
-                const usage = button.parentNode.querySelector('#usageBox')
-                navigator.clipboard.writeText(usage.innerText);
-                button.innerHTML = tickEmoji
-                setTimeout(() => {
-                    button.innerHTML = clipboardIcon
-                }, 1500)
-            })
-        }
 
         commandsSearchBar.addEventListener("input", () => {
             const value = commandsSearchBar.value.toLowerCase();
