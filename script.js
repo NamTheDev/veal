@@ -51,13 +51,12 @@ function copyUsage(button) {
         const { name, description, aliases, arguments, usage, index } = command;
         return `
         <div class="card m-3 shiny-hover rounded-5 py-3 bg-transparent bg-gradient" style="width: 400px;">
-        <data json='${JSON.stringify(command)}'></data>
             <div class="card-body">
                 <h5 class="card-title fw-normal">${index}. <span class="fw-bold" id="cardTitle">${name}</span><button type="button" class="btn btn-transparent border border-0 float-end m-1" onclick="copyUsage(this)" usage="${usage}"><i class="fa-regular fa-clipboard"></i></button></h5>
                 <p class="fs-6 fw-light pt-2">${description}</p>
                 <hr>
                 <b>Aliases</b>
-                <p class="bg-black bg-opacity-25 px-3 py-2 my-2 rounded-3 fs-6 fw-light mb-3">${aliases.join(', ') || "none"}</p>
+                <p class="bg-black bg-opacity-25 px-3 py-2 my-2 rounded-3 fs-6 fw-light mb-3" id="cardAliases">${aliases.join(', ') || "none"}</p>
                 <b>Arguments</b>
                 <p class="bg-black bg-opacity-25 px-3 py-2 my-2 rounded-3 fs-6 fw-light mb-3">${arguments || "none"}</p>
             </div>
@@ -95,7 +94,7 @@ function copyUsage(button) {
     // Function to update cards based on search input
     function updateCards(commands) {
         const value = commandsSearchBar.value.toLowerCase()
-        renderCommandCards(commands.filter(({ name }) => name.toLowerCase().includes(value)))
+        renderCommandCards(commands.filter(({ name, aliases }) => name.toLowerCase().includes(value) || aliases.find(aliase => aliase.toLowerCase().includes(value))))
     }
 
     // Check current page and add event listeners accordingly
@@ -109,12 +108,12 @@ function copyUsage(button) {
 
         const categoryCounts = {}
         commands.forEach(command => {
-            const {category} = command;
+            const { category } = command;
             categoryCounts[category] = (categoryCounts[category] || 0) + 1;
         });
 
         // Extract categories from commands data
-        const categories = [`All (${commands.length})`, ...new Set(commands.map(({category}) => `${category} (${categoryCounts[category]})`))];
+        const categories = [`All (${commands.length})`, ...new Set(commands.map(({ category }) => `${category} (${categoryCounts[category]})`))];
         console.log(categories)
         // Display total number of commands
         commandsTotal.innerText = commands.length
@@ -129,18 +128,16 @@ function copyUsage(button) {
         })
 
         commandsSearchBar.addEventListener("input", () => {
+            const selectValue = selectCategories.value.split(' ')[0]
             const value = commandsSearchBar.value.toLowerCase();
             const re = new RegExp(value, 'i');
-            const commands = []
-            for (const card of cardsContainer.getElementsByTagName('data')) {
-                commands.push(JSON.parse(card.getAttribute('json')))
-            }
-            console.log(commands)
-            updateCards(commands);
+            const filteredCommandsArray = selectValue === "Select" || selectValue === "All" ? commands : commands.filter(({ category }) => selectValue === category)
+            updateCards(filteredCommandsArray);
             for (const card of cardsContainer.children) {
                 const title = card.querySelector('#cardTitle');
-                if (!title) continue;
+                const aliases = card.querySelector('#cardAliases')
                 const highlightedText = card.querySelector('.bg-secondary');
+                if (!title) continue;
                 if (re.test(title.innerText)) {
                     if (!highlightedText) {
                         title.innerHTML = title.innerHTML.replace(re, '<span class="bg-secondary">$&</span>');
@@ -148,6 +145,16 @@ function copyUsage(button) {
                 } else {
                     if (highlightedText) {
                         title.innerHTML = title.innerHTML.replace(highlightedText.outerHTML, highlightedText.innerText);
+                    }
+                }
+                if(aliases.innerText.includes('none')) continue;
+                if (re.test(aliases.innerText)) {
+                    if (!highlightedText) {
+                        aliases.innerHTML = aliases.innerHTML.replace(re, '<span class="bg-secondary">$&</span>');
+                    }
+                } else {
+                    if (highlightedText) {
+                        aliases.innerHTML = aliases.innerHTML.replace(highlightedText.outerHTML, highlightedText.innerText);
                     }
                 }
             }
