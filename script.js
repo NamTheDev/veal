@@ -51,6 +51,7 @@ function copyUsage(button) {
         const { name, description, aliases, arguments, usage, index } = command;
         return `
         <div class="card m-3 shiny-hover rounded-5 py-3 bg-transparent bg-gradient" style="width: 400px;">
+        <data json='${JSON.stringify(command)}'></data>
             <div class="card-body">
                 <h5 class="card-title fw-normal">${index}. <span class="fw-bold" id="cardTitle">${name}</span><button type="button" class="btn btn-transparent border border-0 float-end m-1" onclick="copyUsage(this)" usage="${usage}"><i class="fa-regular fa-clipboard"></i></button></h5>
                 <p class="fs-6 fw-light pt-2">${description}</p>
@@ -130,6 +131,11 @@ function copyUsage(button) {
         commandsSearchBar.addEventListener("input", () => {
             const value = commandsSearchBar.value.toLowerCase();
             const re = new RegExp(value, 'i');
+            const commands = []
+            for (const card of cardsContainer.getElementsByTagName('data')) {
+                commands.push(JSON.parse(card.getAttribute('json')))
+            }
+            console.log(commands)
             updateCards(commands);
             for (const card of cardsContainer.children) {
                 const title = card.querySelector('#cardTitle');
