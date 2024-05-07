@@ -6,7 +6,6 @@ const commandsSearchBar = document.getElementById('commandsSearchBar')
 const buttonsList = document.getElementById('buttonsList')
 const commandsTotal = document.getElementById('commandsTotal')
 const codeCopyButton = document.getElementById('codeCopyButton')
-
 // Function to open invite link
 function openInvite(type) {
     const url = type === 'bot' ? 'https://discord.com/oauth2/authorize?client_id=1229494317115244544&permissions=8&scope=bot' : 'https://discord.gg/veal';
@@ -24,7 +23,6 @@ function copyUsage(button) {
         button.innerHTML = clipboardIcon
     }, 1500)
 }
-
 
 (async () => {
     // Function to add options to select element

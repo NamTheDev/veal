@@ -21,14 +21,14 @@ body::-webkit-scrollbar {
 }
 
 .wrapper {
-    backdrop-filter: blur(15px) brightness(70%); 
+    backdrop-filter: blur(15px) brightness(70%);
     min-height: 100vh;
 }
 
 .background-image {
-    background-image: url('./assets/background.gif');
-    background-attachment: fixed;
+    background-image: url("assets/background.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
