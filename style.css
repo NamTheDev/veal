@@ -21,7 +21,7 @@ body::-webkit-scrollbar {
 }
 
 .wrapper {
-    backdrop-filter: blur(15px) brightness(70%);
+    backdrop-filter: blur(10px) brightness(150%);
     min-height: 100vh;
 }
 
