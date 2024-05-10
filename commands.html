@@ -37,16 +37,21 @@
                 <p class="fs-2"><span class="fw-bold">Total</span>: <span id="commandsTotal"></span></p>
             </div>
             <div class="px-3">
-                <div class="d-flex justify-content-evenly">
+                <div class="d-flex justify-content-center">
                     <div class="input-group" style="max-width: 500px;">
                         <input type="text" class="form-control bg-black bg-opacity-50 rounded-3 mx-1" autocomplete="off"
                             placeholder="Search" id="commandsSearchBar">
                     </div>
-                    <select class="form-select bg-black bg-opacity-50 mx-1" id="selectCategories" style="max-width: 500px;">
-                        <option disabled selected>Select a category</option>
-                    </select>
+                    <div class="dropdown">
+                        <button type="button" class="btn bg-black dropdown-toggle border bg-opacity-50 mx-1"
+                            style="max-width: 500px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Select a category
+                        </button>
+                        <ul class="dropdown-menu bg-black" id="selectCategories" style="--bs-bg-opacity: 0.9; --bs-dropdown-link-hover-bg: grey; --bs-dropdown-link-active-bg: rgb(53, 53, 53);"></ul>
+                    </div>
                 </div>
-                <div class="container-fluid rounded-5 py-4 mt-3 d-flex flex-wrap justify-content-center bg-black bg-opacity-25" style="max-width: 1350px;" id="cards">
+                <div class="container-fluid rounded-5 py-4 mt-3 d-flex flex-wrap justify-content-center bg-black bg-opacity-25"
+                    style="max-width: 1350px;" id="cards">
                 </div>
             </div>
         </div>

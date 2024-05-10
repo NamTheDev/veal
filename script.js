@@ -28,7 +28,7 @@ function copyUsage(button) {
     // Function to add options to select element
     function addSelectOptions(categories) {
         for (const category of categories) {
-            selectCategories.innerHTML += `<option class="bg-black">${category}</option>`
+            selectCategories.innerHTML += `<li><a class="dropdown-item">${category}</a></li>`
         }
     }
 
@@ -120,7 +120,8 @@ function copyUsage(button) {
         if (Array.isArray(commands) && commands.length > 0) renderCommandCards(commands);
 
 
-        selectCategories.addEventListener('change', () => {
+        selectCategories.addEventListener('show.bs.dropdown', (target) => {
+            console.log(target)
             const value = selectCategories.value.split(' ')[0]
             renderCommandCards(value === 'All' ? commands : commands.filter(({ category }) => category === value))
         })
